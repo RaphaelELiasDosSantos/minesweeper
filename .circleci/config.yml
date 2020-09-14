@@ -29,52 +29,9 @@ jobs:
       - run: 
           name: "Setup custom environment variables"
           command: |
-            echo 'export PROJECT_NAME="authentication"' >> $BASH_ENV
-
-      #- run:
-      #   name: install aws
-      #    command: |
-      #      curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-      #      unzip awscli-bundle.zip
-      #      ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+            echo 'export PROJECT_NAME="minesweeper"' >> $BASH_ENV
 
       - run: aws configure set default.region us-west-1
-
-      - run:
-          name: "Log in to AWS ECR"
-          command: eval $(aws ecr get-login --region us-east-1 --no-include-email)
-
-      - run:
-          name: "Build & Push Docker Image"
-          command: |
-            docker build -t 071025751923.dkr.ecr.us-east-1.amazonaws.com/targg-$PROJECT_NAME:$CIRCLE_BUILD_NUM .
-            docker push 071025751923.dkr.ecr.us-east-1.amazonaws.com/targg-$PROJECT_NAME:$CIRCLE_BUILD_NUM
-
-      - run:
-          name: "Cloudformation validate"
-          command: aws cloudformation validate-template --template-url https://targg-cloudformation.s3.amazonaws.com/$PROJECT_NAME.yaml
-      
-      - run:
-          name: "Cloudformation update"
-          command: cfn-create-or-update
-             --stack-name $PROJECT_NAME
-             --region us-east-1
-             --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM
-             --template-url https://targg-cloudformation.s3.amazonaws.com/$PROJECT_NAME.yaml
-             --parameters ParameterKey=imagemFinal,ParameterValue=071025751923.dkr.ecr.us-east-1.amazonaws.com/targg-$PROJECT_NAME:$CIRCLE_BUILD_NUM
-             ParameterKey=nameContainer,ParameterValue=container-$PROJECT_NAME
-             ParameterKey=nameService,ParameterValue=service-$PROJECT_NAME
-             ParameterKey=nameApplication,ParameterValue=application-$PROJECT_NAME
-             ParameterKey=clusterARN,ParameterValue=arn:aws:ecs:us-east-1:071025751923:cluster/ecs-production
-             ParameterKey=clusterName,ParameterValue=ecs-production
-             ParameterKey=loadBalancerARN,ParameterValue=arn:aws:elasticloadbalancing:us-east-1:071025751923:listener/app/ecs-loadbalancer-production/0c4f5b97f11727ea/9d888d079cc8b3f8
-             ParameterKey=CONFIGHostEndpoint,ParameterValue=authentication.targg.com
-             ParameterKey=CONFIGPriority,ParameterValue=1
-             ParameterKey=VPCId,ParameterValue=vpc-0d5f120ce08214b3b
-             ParameterKey=AlarmNameIn,ParameterValue="Alarm +90% $PROJECT_NAME"
-             ParameterKey=AlarmNameOut,ParameterValue="Alarm -70% $PROJECT_NAME"
-             ParameterKey=SubnetA,ParameterValue=subnet-0740693ea400260bb
-             ParameterKey=SubnetB,ParameterValue=subnet-0c41616b710114b21
 
 workflows:
   version: 2
