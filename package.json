@@ -1,0 +1,102 @@
+{
+  "name": "minesweeper-api",
+  "version": "1.0.0",
+  "description": "Minesweeper API Test",
+  "main": "index.js",
+  "config": {
+    "version": "**",
+    "folder": "**",
+    "file": "*@(.spec.js)"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "start": "cp .env.sample .env && nodemon -e js,json server/index.js",
+    "start:windows": "nodemon -e js,json server/index.js",
+    "start:dist": "npm run build && node dist/server/index.js",
+    "start:debug": "npm run build && node --inspect dist/server/index.js",
+    "build": "cp .env.sample .env && npm run clean && babel server -d dist/server -D -s && babel configs -d dist/configs -D -s && babel versions -d dist/versions -D -s",
+    "test": "mocha --require versions/v*/test/unit/helpers \"versions/v*/**/*@(.spec.js)\" --compilers js:babel-register -R dot --timeout 5000 --reporter mocha-jenkins-reporter",
+    "cover": "nyc npm test",
+    "lint": "eslint ./versions/v*/src ./versions/v*/test ./server --ext .json --ext .js",
+    "doc": "bash -c 'for v in ./versions/*/  && do (jsdoc $v/src/**/* -d $v/out -c .jsdocrc && aws s3 sync $v/out/ s3://docs.ingaia.com.br/ms-ingaia`echo $v | cut -c11-`) && done'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bristol": "^0.3.3",
+    "crypto": "^1.0.1",
+    "fs": "0.0.1-security",
+    "jsonpath-plus": "^0.16.0",
+    "koa": "^2.0.0",
+    "koa-body": "^2.0.0",
+    "koa-convert": "^1.2.0",
+    "koa-cors": "0.0.16",
+    "koa-jwt": "^2.0.1",
+    "koa-router": "^7.0.1",
+    "koa-websocket": "^5.0.1",
+    "lodash": "^4.16.2",
+    "lru-cache": "^4.0.2",
+    "moment": "^2.18.1",
+    "mongodb": "^3.2.5",
+    "mongoose": "^5.6.0",
+    "mongoose-paginate-v2": "^1.3.0",
+    "node-fetch": "^1.7.1",
+    "nodemailer": "^6.2.1",
+    "palin": "^2.1.0",
+    "redis": "^2.6.3",
+    "request": "^2.88.0",
+    "require-all": "^2.0.0",
+    "swagger2-koa": "0.0.20"
+  },
+  "devDependencies": {
+    "app-module-path": "^1.1.0",
+    "babel-cli": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-istanbul": "^2.0.0",
+    "babel-plugin-source-map-support": "0.0.1",
+    "babel-plugin-transform-runtime": "^6.12.0",
+    "babel-preset-es2015-node6": "^0.3.0",
+    "babel-preset-stage-1": "^6.13.0",
+    "babel-register": "^6.11.6",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "cross-env": "^2.0.0",
+    "docdash": "^0.4.0",
+    "dotenv": "^2.0.0",
+    "eslint": "^3.3.1",
+    "eslint-config-standard": "^6.0.0-beta.3",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "eslint-watch": "^2.1.14",
+    "jsdoc-babel": "^0.3.0",
+    "jsonwebtoken": "^7.1.9",
+    "mocha": "^3.0.2",
+    "mocha-jenkins-reporter": "^0.2.6",
+    "nock": "^8.0.0",
+    "nodemon": "^1.18.4",
+    "nyc": "^8.1.0",
+    "sequelize-cli": "^2.6.0",
+    "sinon": "^1.17.5",
+    "sinon-chai": "^2.8.0",
+    "supertest": "^2.0.0"
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false,
+    "reporter": [
+      "text",
+      "lcov",
+      "cobertura"
+    ],
+    "include": [
+      "versions/v*/**/*.js",
+      "server/*.js"
+    ],
+    "exclude": [
+      "versions/v*/test/**/*",
+      "versions/v*/swagger/**/*"
+    ]
+  }
+}

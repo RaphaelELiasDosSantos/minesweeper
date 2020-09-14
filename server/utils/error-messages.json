@@ -1,0 +1,135 @@
+{
+  "DEFAULT": {
+    "status": 500,
+    "body": {
+      "code": 1,
+      "message": "Erro ao processar requisição"
+    }
+  },
+  "ERROR:1": {
+    "status": 401,
+    "body": {
+      "code": 2,
+      "message": "Header Authorization inválido. O formato correto é \"Authorization: Bearer <token>\""
+    }
+  },
+  "ERROR:2": {
+    "status": 400,
+    "body": {
+      "code": 3,
+      "message": "Parâmetros inválidos para requisição"
+    }
+  },
+  "ERROR:3": {
+    "status": 500,
+    "body": {
+      "code": 4,
+      "message": "Erro ao obter informações do usuário"
+    }
+  },
+  "ERROR:4": {
+    "status": 400,
+    "body": {
+      "code": 462,
+      "message": "Error 400, code 462"
+    }
+  },
+  "ERROR:5": {
+    "status": 400,
+    "body": {
+      "code": 465,
+      "message": "Desculpe, o código de verificação informado não é válido. Verifique se o código informado está correto ou solicite um novo código"
+    }
+  },
+  "ERROR:6": {
+    "status": 401,
+    "body": {
+      "code": 6,
+      "message": "Credenciais inválidas"
+    }
+  },
+  "ERROR:7": {
+    "status": 400,
+    "body": {
+      "code": 6,
+      "message": "Error 400, code 6"
+    }
+  },
+  "ERROR:8": {
+    "status": 400,
+    "body": {
+      "code": 5,
+      "message": "Error 400, code 5"
+    }
+  },
+  "ERROR:9": {
+    "status": 401,
+    "body": {
+      "code": 7,
+      "message": "Dados do usuário não conferem. Novo login é necessário"
+    }
+  },
+  "ERROR:10": {
+    "status": 401,
+    "body": {
+      "code": 8,
+      "message": "Credenciais inválidas. Novo login é necessário"
+    }
+  },
+  "ERROR:11": {
+    "status": 401,
+    "body": {
+      "code": 9,
+      "message": "Credenciais inválidas ou cliente inativo"
+    }
+  },
+  "ERROR:12": {
+    "status": 401,
+    "body": {
+      "code": 10,
+      "message": "Erro de comunicação ao autenticar"
+    }
+  },
+  "ERROR:13": {
+    "status": 404,
+    "body": {
+      "code": 11,
+      "message": "Número e código de cliente não são do mesmo cliente"
+    }
+  },
+  "ERROR:14": {
+    "status": 401,
+    "body": {
+      "code": 14,
+      "message": "Header Authorization inválido. O formato correto é \"Authorization: Basic <token>\""
+    }
+  },
+  "ERROR:15": {
+    "status": 400,
+    "body": {
+      "code": 15,
+      "message": "A portabilidade deve estar concluída para efetuar o \"dismiss\"."
+    }
+  },
+  "ERROR:16": {
+    "status": 404,
+    "body": {
+      "code": 16,
+      "message": "Número não encontrado."
+    }
+  },
+  "ERROR:NOT_FOUND": {
+    "status": 404,
+    "body": {
+      "code": 17,
+      "message": "Fatura não encontrada."
+    }
+  },
+  "ERROR:INTERNAL_ERROR": {
+    "status": 500,
+    "body": {
+      "code": 18,
+      "message": "Problema ao processar requisição."
+    }
+  }
+}
