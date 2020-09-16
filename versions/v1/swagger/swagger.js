@@ -238,6 +238,222 @@ export default {
           }
         }
       }
+    },
+    '/game': {
+      'post': {
+        'summary': 'Create a new game.',
+        'description': 'Create the game.',
+        'operationId': 'create game',
+        'produces': [
+          'application/json'
+        ],
+        'consumes': [
+          'application/json'
+        ],
+        'responses': {
+          '200': {
+            'description': 'Informations about game created.',
+            'schema': {
+              'type': 'object'
+            }
+          },
+          '404': {
+            'description': 'Game not found.',
+            'schema': {
+              'type': 'object'
+            },
+            'example': {
+              'message': 'Game not found.'
+            }
+          },
+          '500': {
+            'description': 'validation failed.',
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'code': {
+                  'type': 'integer'
+                },
+                'message': {
+                  'type': 'string'
+                }
+              }
+            },
+            'example': {
+              'status': 'error',
+              'message': ''
+            }
+          }
+        },
+        'default': {
+          'description': 'Unexpected error',
+          'schema': {
+            '$ref': '#/definitions/Error'
+          }
+        }
+      }
+    },
+    '/games': {
+      'get': {
+        'summary': 'Get games.',
+        'description': 'Returns the informations of games.',
+        'operationId': 'get games',
+        'produces': [
+          'application/json'
+        ],
+        'consumes': [
+          'application/json'
+        ],
+        'responses': {
+          '200': {
+            'description': 'Paginate games.',
+            'schema': {
+              'type': 'object'
+            }
+          },
+          '404': {
+            'description': 'Game not found.',
+            'schema': {
+              'type': 'object'
+            },
+            'example': {
+              'message': 'Game not found.'
+            }
+          },
+          '500': {
+            'description': 'Validation failed.',
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'code': {
+                  'type': 'integer'
+                },
+                'message': {
+                  'type': 'string'
+                }
+              }
+            },
+            'example': {
+              'status': 'error',
+              'message': ''
+            }
+          }
+        },
+        'default': {
+          'description': 'Unexpected error',
+          'schema': {
+            '$ref': '#/definitions/Error'
+          }
+        }
+      }
+    },
+    '/game/{id}': {
+      'delete': {
+        'summary': 'Remove a game.',
+        'description': 'Remove a entire game.',
+        'operationId': 'remove game',
+        'produces': [
+          'application/json'
+        ],
+        'consumes': [
+          'application/json'
+        ],
+        'responses': {
+          '200': {
+            'description': 'Game removed successfully.',
+            'schema': {
+              'type': 'object'
+            }
+          },
+          '404': {
+            'description': 'Game not found.',
+            'schema': {
+              'type': 'object'
+            },
+            'example': {
+              'message': 'Game not found.'
+            }
+          },
+          '500': {
+            'description': 'validation failed.',
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'code': {
+                  'type': 'integer'
+                },
+                'message': {
+                  'type': 'string'
+                }
+              }
+            },
+            'example': {
+              'status': 'error',
+              'message': ''
+            }
+          }
+        },
+        'default': {
+          'description': 'Unexpected error',
+          'schema': {
+            '$ref': '#/definitions/Error'
+          }
+        }
+      }
+    },
+    '/game/{id}/mark': {
+      'post': {
+        'summary': 'Open a new box of a game.',
+        'description': 'Open the net position.',
+        'operationId': 'open position',
+        'produces': [
+          'application/json'
+        ],
+        'consumes': [
+          'application/json'
+        ],
+        'responses': {
+          '200': {
+            'description': 'Informations about position opened.',
+            'schema': {
+              'type': 'object'
+            }
+          },
+          '404': {
+            'description': 'Game not found.',
+            'schema': {
+              'type': 'object'
+            },
+            'example': {
+              'message': 'Game not found.'
+            }
+          },
+          '500': {
+            'description': 'validation failed.',
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'code': {
+                  'type': 'integer'
+                },
+                'message': {
+                  'type': 'string'
+                }
+              }
+            },
+            'example': {
+              'status': 'error',
+              'message': ''
+            }
+          }
+        },
+        'default': {
+          'description': 'Unexpected error',
+          'schema': {
+            '$ref': '#/definitions/Error'
+          }
+        }
+      }
     }
   }
 }

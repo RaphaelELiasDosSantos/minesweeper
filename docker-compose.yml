@@ -13,17 +13,17 @@ services:
     # so they determine the order of service startup.
     links:
       - mongo
-      - redis
 
     command:
       - /bin/bash
       - -c
       - npm start
-  redis:
-    image: "redis:alpine"
-    ports:
-        - "6379:6379"
+  #redis:
+  #  image: "redis:alpine"
+  #  ports:
+  #      - "6379:6379"
   mongo:
     image: "mongo:3.4.2"
+    tty: true
     ports:
       - "27017:27017"

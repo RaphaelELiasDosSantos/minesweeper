@@ -84,7 +84,6 @@
   },
   "nyc": {
     "sourceMap": false,
-    "instrument": false,
     "reporter": [
       "text",
       "lcov",

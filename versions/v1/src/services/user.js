@@ -8,7 +8,7 @@ const login = async(ctx) => {
   ctx.body = response
 }
 const create = async(ctx) => {
-  const response = await company.create(ctx.request.body)
+  const response = await user.create(ctx.request.body)
   if (!response.response) {
     ctx.status = 400
   }

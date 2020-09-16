@@ -5,7 +5,7 @@ services:
     build:
       context: .
     ports:
-      - "4040:4040"
+      - "80:80"
     image: minesweeper-raphael:latest
 
     # Link to containers in another service.
@@ -13,16 +13,15 @@ services:
     # so they determine the order of service startup.
     links:
       - mongo
-      - redis
 
     command:
       - /bin/bash
       - -c
       - npm test
-  redis:
-    image: "redis:alpine"
-    ports:
-        - "6379:6379"
+  #redis:
+  #  image: "redis:alpine"
+  #  ports:
+  #      - "6379:6379"
   mongo:
     image: "mongo:3.4.2"
     ports:
