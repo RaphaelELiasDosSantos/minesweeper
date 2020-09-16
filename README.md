@@ -1,4 +1,4 @@
-###minesweeper
+## minesweeper
 
 To run the application you need to use:
 
@@ -18,9 +18,9 @@ docker-compose -f docker-compose-test.yml up --build
 
 the API Documentation could be found on Swagger
 
-##CREATE AN USER
+## CREATE AN USER
 
-#POST - http://{HOST}/v1/register
+### POST - http://{HOST}/v1/register
 
 {
     "name": "Raphael Santos",
@@ -45,9 +45,9 @@ Response
 }
 
 
-##CREATE AN USER
+## CREATE AN USER
 
-#POST - http://{HOST}/v1/login
+### POST - http://{HOST}/v1/login
 
 {
     "email": "email@test1.com",
@@ -70,9 +70,9 @@ Response
     }
 }
 
-##GET YOUR USER
+## GET YOUR USER
 
-#GET - http://{HOST}/v1/user
+### GET - http://{HOST}/v1/user
 
 header
 {
@@ -94,9 +94,9 @@ Response
     }
 }
 
-##CREATE A GAME
+## CREATE A GAME
 
-#POST - http://{HOST}/v1/game
+### POST - http://{HOST}/v1/game
 
 header
 {
@@ -237,9 +237,9 @@ Response
     ]
 }
 
-##GET THE GAMES
+## GET THE GAMES
 
-#GET - http://{HOST}/v1/games
+### GET - http://{HOST}/v1/games
 
 header
 {
@@ -382,9 +382,9 @@ Response
     ]
 }
 
-##DELETE THE GAME
+## DELETE THE GAME
 
-#DELETE - http://{HOST}/v1/game/:id
+### DELETE - http://{HOST}/v1/game/:id
 
 header
 {
@@ -396,9 +396,9 @@ Response
     "response": true
 }
 
-##MARK A FLAG / NEW POSITION
+## MARK A FLAG / NEW POSITION
 
-#POST - http://{HOST}/v1/game/:id/mark
+### POST - http://{HOST}/v1/game/:id/mark
 
 header
 {
