@@ -2,19 +2,19 @@
 
 To run the application you need to use:
 
-npm start
+### npm start
 
 To run the tests you need to use:
 
-npm run test
+### npm run test
 
 You could run the server using the following command:
 
-docker-compose -f docker-compose.yml up --build
+### docker-compose -f docker-compose.yml up --build
 
 You could run the tests using the docker-compose-test.yml, run the following command:
 
-docker-compose -f docker-compose-test.yml up --build
+### docker-compose -f docker-compose-test.yml up --build
 
 the API Documentation could be found on Swagger
 
