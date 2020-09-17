@@ -53,7 +53,7 @@ Response
 }
 
 
-## CREATE AN USER
+## LOGIN
 
 ### POST - http://{HOST}/v1/login
 
@@ -407,6 +407,20 @@ Response
 ## MARK A FLAG / NEW POSITION
 
 ### POST - http://{HOST}/v1/game/:id/mark
+
+THE POSSIBLES TYPES ARE:
+
+### R -> RED FLAG
+
+### F -> QUESTION MARK
+
+### O -> DISCOVERED POSITION
+
+AND THE TWO FOLLOWING TYPES ARE PRESENTED IN THE BOARD, BUT ITS NOT POSSIBLE TO SEND IN THE INPUT REQUEST:
+
+### X -> UNCOVERED POSITION
+
+### B -> BOMB
 
 header
 {
