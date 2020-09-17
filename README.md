@@ -1,5 +1,13 @@
 ## minesweeper
 
+## External Endpoint
+
+To access the application use the following address:
+
+### http://54.172.104.73:3000/
+
+## Local Build
+
 To run the application you need to use:
 
 ### npm start
